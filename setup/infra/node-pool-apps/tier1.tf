@@ -35,7 +35,7 @@ resource "google_container_node_pool" "tier1" {
       local_ssd_count = var.tier1_pool_ephemeral_storage_ssd_count
     }
 
-    image_type = "COS"
+    image_type = "COS_CONTAINERD"
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",

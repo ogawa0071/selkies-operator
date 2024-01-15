@@ -27,10 +27,10 @@ function log_red() { echo -e "${RED}$@${NC}"; }
 [[ -z "${ISTIOCTL}" ]] && log_red "Missing ISTIOCTL env var." && exit 1
 
 log_cyan "Installing Istio control plane..."
-${ISTIOCTL} manifest generate --set profile=default | kubectl apply -f -
+${ISTIOCTL} install --skip-confirmation
 ## wait for EnvoyFilter crd to be ready and reapply 
 sleep 60
-${ISTIOCTL} manifest generate --set profile=default | kubectl apply -f -
+${ISTIOCTL} install --skip-confirmation
 kubectl label ns istio-system install.operator.istio.io/owner-kind=IstioControlPlane --overwrite=true
 log_cyan "Waiting for namespace 'istio-system'"
 until [[ -n $(kubectl get namespace istio-system -oname 2>/dev/null) ]]; do sleep 2; done

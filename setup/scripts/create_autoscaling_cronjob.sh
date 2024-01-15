@@ -46,7 +46,7 @@ function makeCronJob() {
 
   cat - > $dest <<EOF
 kind: CronJob
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 metadata:
   name: ${NODE_POOL}-node-pool-autoscaler${name_postfix}
   namespace: pod-broker-system

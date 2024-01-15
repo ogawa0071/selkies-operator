@@ -48,7 +48,7 @@ module "broker" {
       local_ssd_count    = 0
       disk_size_gb       = var.default_pool_disk_size_gb
       disk_type          = var.default_pool_disk_type
-      image_type         = "COS"
+      image_type         = "COS_CONTAINERD"
       auto_repair        = true
       auto_upgrade       = true
       service_account    = length(var.service_account) == 0 ? "broker@${var.project_id}.iam.gserviceaccount.com" : var.service_account
